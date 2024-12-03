@@ -1,0 +1,9 @@
+body {
+    background-color: #f5f5dc;  /* Brownish background */
+    color: #2e8b57;             /* Green text */
+    font-family: Arial, sans-serif;
+}
+button {
+    background-color: white;
+    border: 2px solid green;
+}

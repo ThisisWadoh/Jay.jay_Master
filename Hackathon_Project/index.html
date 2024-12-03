@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>e_limo Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Welcome to e_limo</h1>
+    <div id="status">Loading...</div>
+    <button onclick="controlIrrigation('start')">Start Irrigation</button>
+    <button onclick="controlIrrigation('stop')">Stop Irrigation</button>
+
+    <script>
+        function controlIrrigation(action) {
+            fetch(`/irrigation_control?action=${action}`)
+                .then(response => response.json())
+                .then(data => document.getElementById('status').innerText = data.message);
+        }
+    </script>
+</body>
+</html>
