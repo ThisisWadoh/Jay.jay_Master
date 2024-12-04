@@ -1,0 +1,15 @@
+# gitignore environment variables
+Hackathon_Project/.env
+
+# gitignore Python cache files
+__pycache__/
+*.pyc .gitignore
+
+# gitignore logs
+*.log
+
+# gitignore dependency directories
+node_modules/
+
+# gitignore VS Code settings (optional)
+.vscode/ 
