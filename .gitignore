@@ -1,5 +1,5 @@
 # gitignore environment variables
-Hackathon_Project/.env
+Final_Project/.env
 
 # gitignore Python cache files
 __pycache__/
