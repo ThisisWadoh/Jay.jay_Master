@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E_limo Remote Farm</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Welcome to E_limo!</h1>
+        <img src="{{ url_for('static', filename='images/Solar panels & tree.jpg') }}" alt="Logo" class="logo">
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Main Content Area -->
+        <main>
+            <h2>Your number 1 online farm assistant...</h2>
+            <p>To access our services & book appointments register/login below</p>            
+                <a href="register.html">Register</a> | <a href="login.html">Login</a>
+            </br>
+            <img src="{{ url_for('static', filename='images/My_Farm.webp') }}" alt="my_online_farm" width="400px" height="400px">
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>Enquiries</h3>
+            <input type="text" placeholder="Search...">
+            <ul>
+                <li><a href="#link1">FAQs</a></li>
+                <li><a href="#link2">Help</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <div id="status">Loading...</div>
+    <button onclick="controlIrrigation('start')">Start Irrigation</button>
+    <button onclick="controlIrrigation('stop')">Stop Irrigation</button>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 E_limo Farming App. All rights reserved.</p>
+        <div class="social-media">
+            <a href="#facebook">Facebook</a> | 
+            <a href="#twitter">Twitter</a> | 
+            <a href="#instagram">Instagram</a>
+        </div>
+    </footer>
+
+    <script>
+        function controlIrrigation(action) {
+        fetch(`/api/irrigate`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ action: 'start', crop: 'tomato' })  // Example crop
+        })
+        .then(response => response.json())
+        .then(data => document.getElementById('status').innerText = data.status)
+        .catch(err => console.error("Error:", err));
+
+        }
+
+    </script>
+</body>
+</html>
